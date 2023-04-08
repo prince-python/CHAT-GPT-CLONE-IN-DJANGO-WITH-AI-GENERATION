@@ -1,6 +1,8 @@
 from django.shortcuts import render,HttpResponse
-import openai 
-openai.api_key="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"
+import openai
+
+ 
+openai.api_key="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"
 
 
 
