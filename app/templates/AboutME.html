@@ -1,0 +1,61 @@
+{% extends 'base.html' %}
+{%for message in messages%}
+{%if message%}
+<script>
+    alert("{{message}}");
+</script>
+{%endif%}
+{%endfor%}
+
+{%block content%}
+<center><div class=" h-100vh w-100vh p-4 mt-5">
+<div class=" mt-5 text-black shadow-lg rounded rounded-4 p-4">
+    <div id="overlay">
+        <div class="cv-spinner">
+          <span class="spinner"></span>
+        </div>
+      </div>
+    <img class="p-5 h-75 w-75" src="" id="dd" alt="SEARCH YOUR IMAGINATION IMAGE AND SEE HERE RESULT">
+      
+    
+</div>
+
+</div></center>
+<footer  class="fixed-bottom bg-white p-4">
+
+        <div class="input-group rounded bg-white  shadow-lg fixed-bottom " style="height:100px">
+            <input type="text" id="t1" class="form-control shadow-lg bg-white text-black rounded rounded-4" name="question" placeholder="Search Your Dream Ai IMAGE">
+            <button style="width:150px"  class="bg-white text-center text-black border-black  shadow-lg rounded rounded-4" id="search-addon" onclick="send()" >
+                GO<<
+            </button>
+        </div>
+
+
+</footer>
+
+<script>
+    function send(){
+    var v=document.getElementById('t1').value;
+    $(document).ready(function(){
+        $("#overlay").fadeIn(300);　
+    
+        $.ajax({
+            
+            type: 'GET',
+            url : "../image?val="+v,
+            success: function(response){
+                document.getElementById('dd').src=response
+            },
+
+            error: function(response){
+                alert('An error occured')
+            }
+        }).done(function() {
+            setTimeout(function(){
+              $("#overlay").fadeOut(300);
+            },300);
+    })
+}
+    )}
+    </script>  
+{%endblock%}
