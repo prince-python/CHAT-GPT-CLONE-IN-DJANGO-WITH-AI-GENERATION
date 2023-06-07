@@ -2,7 +2,7 @@ from django.shortcuts import render,HttpResponse
 import openai
 
  
-openai.api_key='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'
+openai.api_key='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'
 
 
 
